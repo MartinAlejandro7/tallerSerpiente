@@ -3,6 +3,14 @@
 const canvas = document.getElementById("canvasJuego");
 const ctx = canvas.getContext("2d");
 const TAMANIO_CELDA = 25
+const serpiente = [
+  {x:9,y:9},
+  {x:10,y:9},
+  {x:11,y:9},
+  {x:11,y:10},
+  {x:11,y:11}
+  
+];
 
 
 
@@ -33,7 +41,7 @@ function dibujarTablero() {
 
 function pintarParte(lineaX, lineaY){
   
-  ctx.fillStyle = ("#fbff00")
+  
   ctx.strokeStyle = ("#f00909")
   let posicionX = lineaX * TAMANIO_CELDA;
   let posicionY = lineaY * TAMANIO_CELDA
@@ -41,6 +49,16 @@ function pintarParte(lineaX, lineaY){
   ctx.strokeRect(posicionX,posicionY,TAMANIO_CELDA,TAMANIO_CELDA);
   
 
+}
+function pintarSerpiente(){
+  for (let i=0; i<serpiente.length; i++){
+     if(i === 0){
+      ctx.fillStyle = "#fbff00"; // Amarillo para la cabeza
+    } else {
+      ctx.fillStyle = "#d62323"; // Rojo para el resto del cuerpo
+    }
+    pintarParte(serpiente[i].x,serpiente[i].y);
+  }
 }
 // =========================
 // FUNCIONES DE DIBUJO
@@ -53,12 +71,7 @@ function limpiarCanvas() {
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
-  pintarParte(5,5)
-  pintarParte(10,2)
-  pintarParte(10,10)
-  pintarParte((canvas.width-TAMANIO_CELDA)/TAMANIO_CELDA,(canvas.height-TAMANIO_CELDA)/TAMANIO_CELDA)
-  pintarParte(0,(canvas.height-TAMANIO_CELDA)/TAMANIO_CELDA)
-  pintarParte((canvas.width-TAMANIO_CELDA)/TAMANIO_CELDA,0)
+  pintarSerpiente();
  
 }
 
