@@ -164,7 +164,7 @@ if (
   intervaloSerpiente = null;
   document.getElementById("estado").innerHTML = "Game Over";
   return;
-}wasdas
+}
   if (atrapaComida() === true) {
     puntaje = puntaje + 1
     document.getElementById("puntaje").innerHTML = puntaje
